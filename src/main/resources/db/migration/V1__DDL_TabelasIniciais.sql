@@ -11,9 +11,9 @@ CREATE SEQUENCE sq_tb_pessoa
 CREATE TABLE tb_pessoa (
 	id_pessoa int4 NOT NULL,
 	ds_nome varchar(250) NOT NULL,
-	ds_cpf varchar(11) NULL,
-	ds_email varchar(100) NULL,
-	dt_nascimento timestamp with time zone NOT NULL,
+	ds_cpf varchar(11) NOT NULL,
+	ds_email varchar(100) NOT NULL,
+	dt_nascimento timestamp with time zone NULL,
 	ex_foto varchar(4) NULL,
 	md_foto bytea NULL,
 	CONSTRAINT tb_pessoa_pkey PRIMARY KEY (id_pessoa),
