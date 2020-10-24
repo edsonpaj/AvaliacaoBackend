@@ -19,11 +19,13 @@ public class PessoaRestController {
 
 	@PostMapping
 	public RequestResult save(@RequestBody PessoaDTO dto) {
+		RequestResult result;
 		try {
-			return new RequestResult(RequestResultEnum.OK, null, pessoaService.save(dto));
+			result = new RequestResult(RequestResultEnum.OK, null, pessoaService.save(dto));
 		} catch (Exception e) {
-			return new RequestResult(RequestResultEnum.ER, e.getMessage(), null);
+			result =  new RequestResult(RequestResultEnum.ER, e.getMessage(), null);
 		}
+		return result;
 	}
 	
 }
