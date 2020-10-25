@@ -1,6 +1,7 @@
 package br.com.avaliacao.services;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,11 @@ public class PessoaServiceImpl implements PessoaService, Serializable {
 		Pessoa p = mapper.toEntity(dto);
 		p = repository.save(p);
 		return mapper.toDTO(p);
+	}
+	
+	@Override
+	public List<PessoaDTO> getAll() {
+		return mapper.toListOfPessoaDTO(repository.findAll());
 	}
 
 }
