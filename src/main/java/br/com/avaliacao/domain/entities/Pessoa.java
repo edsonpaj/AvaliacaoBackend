@@ -31,8 +31,7 @@ public class Pessoa implements Serializable {
 	private String cpf;
 	private String email;
 	private Date dataNascimento;
-	private String extencaoFoto;
-	private byte[] conteudoFoto;
+	private String fotoBase64;
 	
 	
 	@Id
@@ -82,20 +81,12 @@ public class Pessoa implements Serializable {
 		this.dataNascimento = dataNascimento;
 	}
 	
-	@Column(name = "ex_foto", length = 4)
-	public String getExtencaoFoto() {
-		return extencaoFoto;
+	@Column(name = "ds_foto_base64")
+	public String getFotoBase64() {
+		return fotoBase64;
 	}
-	public void setExtencaoFoto(String extencaoFoto) {
-		this.extencaoFoto = extencaoFoto;
-	}
-	
-	@Column(name = "md_foto")
-	public byte[] getConteudoFoto() {
-		return conteudoFoto;
-	}
-	public void setConteudoFoto(byte[] conteudoFoto) {
-		this.conteudoFoto = conteudoFoto;
+	public void setFotoBase64(String fotoBase64) {
+		this.fotoBase64 = fotoBase64;
 	}
 	
 	@Override
@@ -128,5 +119,4 @@ public class Pessoa implements Serializable {
 	public String toString() {
 		return getClass().getName() + "[id = " + getId() + "]";
 	}
-	
 }
