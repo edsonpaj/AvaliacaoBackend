@@ -11,4 +11,6 @@ public interface PessoaService extends Serializable {
 
 	public List<PessoaDTO> getAll();
 
+	public Boolean delete(Integer id);
+
 }

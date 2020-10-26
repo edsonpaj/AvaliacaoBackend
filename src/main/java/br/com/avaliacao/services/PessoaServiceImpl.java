@@ -34,7 +34,13 @@ public class PessoaServiceImpl implements PessoaService, Serializable {
 	
 	@Override
 	public List<PessoaDTO> getAll() {
-		return mapper.toListOfPessoaDTO(repository.findAll());
+		return mapper.toListOfPessoaDTO(repository.findAllByOrderByIdDesc());
+	}
+	
+	@Override
+	public Boolean delete(Integer id) {
+		repository.delete(repository.findById(id).get());
+		return Boolean.TRUE;
 	}
 
 }

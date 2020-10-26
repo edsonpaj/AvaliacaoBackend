@@ -2,7 +2,9 @@ package br.com.avaliacao.api.v1;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,6 +50,18 @@ public class PessoaRestController {
 		RequestResult result;
 		try {
 			result = new RequestResult(RequestResultEnum.OK, null, pessoaService.getAll());
+		} catch (Exception e) {
+			result =  new RequestResult(RequestResultEnum.ER, e.getMessage(), null);
+		}
+		return result;
+	}
+	
+	
+	@DeleteMapping(value = "/{id}")
+	public RequestResult excluir(@PathVariable Integer id) {
+		RequestResult result;
+		try {
+			result = new RequestResult(RequestResultEnum.OK, null, pessoaService.delete(id));
 		} catch (Exception e) {
 			result =  new RequestResult(RequestResultEnum.ER, e.getMessage(), null);
 		}
