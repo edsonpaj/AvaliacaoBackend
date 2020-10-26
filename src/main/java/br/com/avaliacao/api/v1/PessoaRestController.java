@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,6 +63,22 @@ public class PessoaRestController {
 		RequestResult result;
 		try {
 			result = new RequestResult(RequestResultEnum.OK, null, pessoaService.delete(id));
+		} catch (Exception e) {
+			result =  new RequestResult(RequestResultEnum.ER, e.getMessage(), null);
+		}
+		return result;
+	}
+	
+	/**
+	 * Salva uma pessoa
+	 * @param dto
+	 * @return
+	 */
+	@PutMapping
+	public RequestResult update(@RequestBody PessoaDTO dto) {
+		RequestResult result;
+		try {
+			result = new RequestResult(RequestResultEnum.OK, null, pessoaService.save(dto));
 		} catch (Exception e) {
 			result =  new RequestResult(RequestResultEnum.ER, e.getMessage(), null);
 		}

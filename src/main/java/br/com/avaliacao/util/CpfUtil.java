@@ -15,8 +15,7 @@ public class CpfUtil {
 	
 	public static Boolean cpfValido(String CPF) {
 		CPF = removerMascara(CPF);
-		Boolean result = null;
-		
+
 		//Referencia https://www.devmedia.com.br/validando-o-cpf-em-uma-aplicacao-java/22097
 		if (CPF.equals("00000000000") || CPF.equals("11111111111")
 			|| CPF.equals("22222222222") || CPF.equals("33333333333")
@@ -24,7 +23,7 @@ public class CpfUtil {
 			|| CPF.equals("66666666666") || CPF.equals("77777777777")
 			|| CPF.equals("88888888888") || CPF.equals("99999999999")
 			|| (CPF.length() != 11)) {
-			result = false ;			
+			return false ;			
 		}
 		
 		char dig10, dig11;
@@ -58,14 +57,13 @@ public class CpfUtil {
 				dig11 = (char)(r + 48);
 			}
 			if ((dig10 == CPF.charAt(9)) && (dig11 == CPF.charAt(10))) {
-				result = true;
+				return true;
 			} else {
-				result = false;
+				return false;
 			}
 		} catch (InputMismatchException erro) {
-			result = false;
+			return false;
 		}
-		return result;
 	}
 	
 }
