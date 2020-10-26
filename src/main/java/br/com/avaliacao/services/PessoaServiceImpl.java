@@ -6,11 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.common.base.Preconditions;
+
 import br.com.avaliacao.domain.dto.PessoaDTO;
 import br.com.avaliacao.domain.entities.Pessoa;
 import br.com.avaliacao.mapper.PessoaMapper;
 import br.com.avaliacao.repository.PessoaRepository;
 import br.com.avaliacao.util.CpfUtil;
+import br.com.avaliacao.util.EmailUtil;
 
 @Service
 public class PessoaServiceImpl implements PessoaService, Serializable {
@@ -22,11 +25,12 @@ public class PessoaServiceImpl implements PessoaService, Serializable {
 
 	@Override
 	public PessoaDTO save(PessoaDTO dto) {
-		if(!CpfUtil.cpfValido(dto.getCpf())) {
-			throw new RuntimeException("O CPF informado não é válido!");
-		} else {
-			dto.setCpf(CpfUtil.removerMascara(dto.getCpf()));
-		}
+		
+		dto.setCpf(CpfUtil.removerMascara(dto.getCpf()));
+		Preconditions.checkArgument(CpfUtil.cpfValido(dto.getCpf()), "O CPF informado não é válido!");
+
+		Preconditions.checkArgument(EmailUtil.emailValido(dto.getEmail()), "O Email informado não é válido!");
+
 		Pessoa p = mapper.toEntity(dto);
 		p = repository.save(p);
 		return mapper.toDTO(p);
