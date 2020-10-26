@@ -86,5 +86,22 @@ public class PessoaRestController {
 	}
 	
 	
+	/**
+	 * Inativa uma pessoa logicamente
+	 * @param dto
+	 * @return
+	 */
+	@PutMapping(value = "/inative/{id}")
+	public RequestResult inative(@PathVariable Integer id) {
+		RequestResult result;
+		try {
+			result = new RequestResult(RequestResultEnum.OK, null, pessoaService.inative(id));
+		} catch (Exception e) {
+			result =  new RequestResult(RequestResultEnum.ER, e.getMessage(), null);
+		}
+		return result;
+	}
+	
+	
 	
 }

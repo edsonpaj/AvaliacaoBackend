@@ -13,4 +13,6 @@ public interface PessoaService extends Serializable {
 
 	public Boolean delete(Integer id);
 
+	public PessoaDTO inative(Integer id);
+
 }

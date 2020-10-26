@@ -11,6 +11,6 @@ import br.com.avaliacao.domain.entities.Pessoa;
 @Repository
 public interface PessoaRepository extends Serializable, JpaRepository<Pessoa, Integer>{
 	
-	public List<Pessoa> findAllByOrderByIdDesc();
+	public List<Pessoa> findAllByAtivoOrderByIdDesc(Boolean ativo);
 
 }

@@ -15,6 +15,7 @@ CREATE TABLE tb_pessoa (
 	ds_email varchar(100) NOT NULL,
 	dt_nascimento timestamp with time zone NULL,
     ds_foto_base64 text,
+    in_ativo bool NOT NULL,
 	CONSTRAINT tb_pessoa_pkey PRIMARY KEY (id_pessoa),
 	CONSTRAINT tb_pessoa_ds_cpf_unique UNIQUE (ds_cpf)
 );

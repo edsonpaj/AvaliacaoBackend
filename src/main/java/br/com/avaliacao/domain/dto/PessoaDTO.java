@@ -10,15 +10,17 @@ public class PessoaDTO {
 	private String email;
 	private Date dataNascimento;
 	private String fotoBase64;
+	private Boolean ativo;
 	
 	public PessoaDTO() {}
 	
-	public PessoaDTO(String nome, String cpf, String email, Date dataNascimento, String fotoBase64) {
+	public PessoaDTO(String nome, String cpf, String email, Date dataNascimento, String fotoBase64 ,Boolean ativo) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
 		this.dataNascimento = dataNascimento;
 		this.fotoBase64 = fotoBase64;
+		this.ativo = ativo;
 	}
 	
 	public Integer getId() {
@@ -56,6 +58,12 @@ public class PessoaDTO {
 	}
 	public void setFotoBase64(String fotoBase64) {
 		this.fotoBase64 = fotoBase64;
+	}
+	public Boolean getAtivo() {
+		return ativo;
+	}
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 
 }

@@ -32,6 +32,7 @@ public class Pessoa implements Serializable {
 	private String email;
 	private Date dataNascimento;
 	private String fotoBase64;
+	private Boolean ativo;
 	
 	
 	@Id
@@ -89,6 +90,15 @@ public class Pessoa implements Serializable {
 		this.fotoBase64 = fotoBase64;
 	}
 	
+	@Column(name = "in_ativo", nullable = false)
+	@NotNull
+	public Boolean getAtivo() {
+		return ativo;
+	}
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -119,4 +129,5 @@ public class Pessoa implements Serializable {
 	public String toString() {
 		return getClass().getName() + "[id = " + getId() + "]";
 	}
+	
 }

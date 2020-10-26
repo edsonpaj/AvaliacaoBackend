@@ -32,13 +32,22 @@ public class PessoaServiceImpl implements PessoaService, Serializable {
 		Preconditions.checkArgument(EmailUtil.emailValido(dto.getEmail()), "O Email informado não é válido!");
 
 		Pessoa p = mapper.toEntity(dto);
+		p.setAtivo(Boolean.TRUE);
+		p = repository.save(p);
+		return mapper.toDTO(p);
+	}
+	
+	@Override
+	public PessoaDTO inative(Integer id) {
+		Pessoa p = repository.findById(id).get();
+		p.setAtivo(Boolean.FALSE);
 		p = repository.save(p);
 		return mapper.toDTO(p);
 	}
 	
 	@Override
 	public List<PessoaDTO> getAll() {
-		return mapper.toListOfPessoaDTO(repository.findAllByOrderByIdDesc());
+		return mapper.toListOfPessoaDTO(repository.findAllByAtivoOrderByIdDesc(Boolean.TRUE));
 	}
 	
 	@Override
