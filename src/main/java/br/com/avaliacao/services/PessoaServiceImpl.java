@@ -25,11 +25,16 @@ public class PessoaServiceImpl implements PessoaService, Serializable {
 
 	@Override
 	public PessoaDTO save(PessoaDTO dto) {
+
+		Preconditions.checkArgument(!(dto.getNome() == null || dto.getNome().isEmpty()), "Nome é obrigatório!");
 		
-		dto.setCpf(CpfUtil.removerMascara(dto.getCpf()));
+		Preconditions.checkArgument(!(dto.getCpf() == null || dto.getCpf().isEmpty()), "CPF é obrigatório!");
 		Preconditions.checkArgument(CpfUtil.cpfValido(dto.getCpf()), "O CPF informado não é válido!");
 
+		Preconditions.checkArgument(!(dto.getEmail() == null || dto.getEmail().isEmpty()), "Email é obrigatório!");
 		Preconditions.checkArgument(EmailUtil.emailValido(dto.getEmail()), "O Email informado não é válido!");
+		
+		dto.setCpf(CpfUtil.removerMascara(dto.getCpf()));
 
 		Pessoa p = mapper.toEntity(dto);
 		p.setAtivo(Boolean.TRUE);
