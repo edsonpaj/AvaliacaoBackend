@@ -1,12 +1,9 @@
-# AvaliacaoTecnicaSAJADVBackend
-
-
 Requsitos
 
-PostgresSql instalando  no memos host que a aplicação irá rodar.
+PostgresSql instalando no mesmo host que a aplicação irá rodar.
 
 
-Criar profile no settings do vamen para as execuções do flyway.
+Criar profile no settings do Maven para as execuções do flyway.
 
 <profile>
    <id>avaliacao_saje_adv</id>
@@ -20,7 +17,6 @@ Criar profile no settings do vamen para as execuções do flyway.
 </profile>
 
 
-
 Criar Base de dados com script abaixo:
 
 CREATE DATABASE avaliacao_saje_adv
@@ -29,3 +25,5 @@ CREATE DATABASE avaliacao_saje_adv
        LC_COLLATE='C'
        LC_CTYPE='C'
        CONNECTION LIMIT=-1;
+
+       
